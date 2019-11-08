@@ -36,7 +36,17 @@ router.post('/', (req, res) => {
 //  adding tasks.
 //  retrieving a list of tasks. The list of tasks should include the project name and project description.
 //  When returning project or task information, the completed property should be true or false.
+router.get('/:id/tasks', (req, res) => {
+    const { id } = req.params;
 
+    Projects.getTasks(id)
+    .then(task => {
+        res.status(200).json(task)
+    })
+    .catch(err => {
+        res.status(500).json({ err: "failed to get tasks"})
+    })
+});
 
 
 module.exports = router;
