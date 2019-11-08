@@ -4,8 +4,6 @@ const Projects = require('./project-model.js');
 
 const router = express.Router();
 
-
-
 //  retrieving a list of projects.
 router.get('/', (req, res) => {
     Projects.getProjects()
@@ -30,10 +28,6 @@ router.post('/', (req, res) => {
     });
   });
 
-
-
-
-//  adding tasks.
 //  retrieving a list of tasks. The list of tasks should include the project name and project description.
 //  When returning project or task information, the completed property should be true or false.
 router.get('/:id/tasks', (req, res) => {
@@ -47,6 +41,5 @@ router.get('/:id/tasks', (req, res) => {
         res.status(500).json({ err: "failed to get tasks"})
     })
 });
-
 
 module.exports = router;
